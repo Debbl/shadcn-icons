@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/i/path:*",
+      "source": "/i/:slug",
       "headers": [
         {
           "key": "Content-Type",
