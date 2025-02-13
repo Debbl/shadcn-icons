@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@debbl/ahooks": "^0.3.4",
+    "@iconify/json": "^2.2.304",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-switch": "^1.1.3",
     "@serwist/next": "^9.0.11",
