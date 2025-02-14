@@ -1,5 +1,5 @@
 {
-  "name": "starter-next-app",
+  "name": "web",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -14,8 +14,8 @@
   },
   "scripts": {
     "d": "tsx ./scripts/dev",
-    "dev": "turbo dev --filter=web",
-    "build": "turbo build --filter=web",
+    "dev": "next dev",
+    "build": "next build",
     "icons": "tsx ./scripts/icons",
     "build:analyze": "ANALYZE=true next build",
     "start": "next start",

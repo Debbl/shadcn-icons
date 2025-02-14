@@ -1,11 +1,5 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import { NextResponse } from "next/server";
-import { getIconByTemplate } from "./utils";
-
-// eslint-disable-next-line n/prefer-global/process
-const CWD = process.cwd();
-const ICON_SETS_DIR = path.join(CWD, "src", "icons", "sets");
+import { getIcon, getIconByTemplate } from "./utils";
 
 export async function GET(
   _request: Request,
@@ -16,11 +10,9 @@ export async function GET(
   const collectionName = slug[0];
   const iconName = slug[1].slice(0, -5);
 
-  const iconSet = JSON.parse(
-    readFileSync(path.join(ICON_SETS_DIR, `${collectionName}.json`), "utf-8"),
-  ) as Record<string, { body: string }>;
+  const icon = await getIcon(collectionName, iconName);
 
-  const content = iconSet[iconName].body;
+  const content = icon?.body;
 
   if (!content) {
     return NextResponse.json("Not Found", { status: 404 });

@@ -3,7 +3,7 @@ import path from "node:path";
 
 // eslint-disable-next-line n/prefer-global/process
 const ICON_DIR = path.join(process.cwd(), "src", "icons");
-const ICON_SETS_DIR = path.join(ICON_DIR, "sets");
+// const ICON_SETS_DIR = path.join(ICON_DIR, "sets");
 
 type Collections = Record<string, string[]>;
 
@@ -26,17 +26,17 @@ export default async function Page({
 
   const icons = collections[collectionName];
 
-  const iconSet = JSON.parse(
-    readFileSync(path.join(ICON_SETS_DIR, `${collectionName}.json`), "utf-8"),
-  ) as Record<string, { body: string }>;
+  // const iconSet = JSON.parse(
+  //   readFileSync(path.join(ICON_SETS_DIR, `${collectionName}.json`), "utf-8"),
+  // ) as Record<string, { body: string }>;
 
-  const getShadcnCmd = (icon: string) => {
-    return `npx shadcn@latest add "https://shadcn-icons.vercel.app/${collectionName}/${icon}.json"`;
-  };
+  // const getShadcnCmd = (icon: string) => {
+  //   return `npx shadcn@latest add "https://shadcn-icons.vercel.app/${collectionName}/${icon}.json"`;
+  // };
 
-  const getIcon = (icon: string) => {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">${iconSet[icon].body}</svg>`;
-  };
+  // const getIcon = (icon: string) => {
+  //   return `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">${iconSet[icon].body}</svg>`;
+  // };
 
   return (
     <div>
@@ -45,9 +45,9 @@ export default async function Page({
       <div>
         {icons.map((icon) => (
           <div key={icon}>
-            {/* eslint-disable-next-line react-dom/no-dangerously-set-innerhtml */}
-            <div dangerouslySetInnerHTML={{ __html: getIcon(icon) }} />
-            <div>{getShadcnCmd(icon)}</div>
+            {icon}
+            {/* <div dangerouslySetInnerHTML={{ __html: getIcon(icon) }} />
+            <div>{getShadcnCmd(icon)}</div> */}
           </div>
         ))}
       </div>

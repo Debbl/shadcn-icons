@@ -3,7 +3,7 @@ import { defineConfig } from "@debbl/eslint-config";
 
 export default defineConfig({
   ignores: {
-    files: ["src/components/ui/", "src/locales", "src/icons"],
+    files: ["src/components/ui/", "src/locales", "**/**/*.json"],
   },
   typescript: true,
   react: {

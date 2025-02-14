@@ -1,0 +1,51 @@
+{
+  "name": "shadcn-icons",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.4.0",
+  "description": "Shadcn Icons CLI",
+  "author": "Brendan Dash <me@aiwan.run> (https://aiwan.run)",
+  "license": "MIT",
+  "homepage": "https://github.com/Debbl/shadcn-icons#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Debbl/shadcn-icons.git"
+  },
+  "bugs": "https://github.com/Debbl/shadcn-icons/issues",
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "pnpm build && node ./dist/index.mjs",
+    "build": "tsup",
+    "test": "vitest",
+    "release": "pnpm build && bumpp && pnpm publish",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "bumpp": "^10.0.3",
+    "tsup": "^8.3.6",
+    "vitest": "^3.0.5"
+  }
+}
