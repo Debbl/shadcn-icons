@@ -52,11 +52,8 @@ for (const collection of Object.keys(Collections)) {
 
   writeFileSync(
     path.join(ICON_SETS_DIR, `${collection}.json`),
-    `${JSON.stringify(iconSet, null, 2)}\n`,
+    JSON.stringify(iconSet, null, 0),
   );
 }
 
-writeFileSync(
-  path.join(ICON_DIR, "data.json"),
-  `${JSON.stringify(data, null, 2)}\n`,
-);
+writeFileSync(path.join(ICON_DIR, "data.json"), JSON.stringify(data, null, 0));
