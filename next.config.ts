@@ -13,7 +13,7 @@ const withSerwist = withSerwistInit({
 });
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: "standalone",
   experimental: {
     reactCompiler: true,
   },

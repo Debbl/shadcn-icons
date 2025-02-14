@@ -1,24 +1,11 @@
-import lucide from "@iconify/json/json/lucide.json";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { NextResponse } from "next/server";
 import { getIconByTemplate } from "./utils";
 
-export const dynamic = "force-static";
-
-const icons = Object.fromEntries(
-  Object.entries(lucide.icons).map(([key, value]) => {
-    const alias =
-      Object.entries(lucide.aliases).find(([_, v]) => v.parent === key)?.[0] ??
-      key;
-
-    return [alias, value];
-  }),
-);
-
-export async function generateStaticParams() {
-  return Object.keys(icons).map((key) => ({
-    slug: ["lucide", `${key}.json`],
-  }));
-}
+// eslint-disable-next-line n/prefer-global/process
+const CWD = process.cwd();
+const ICON_SETS_DIR = path.join(CWD, "src", "icons", "sets");
 
 export async function GET(
   _request: Request,
@@ -26,15 +13,21 @@ export async function GET(
 ) {
   const { slug } = await params;
 
-  const name = slug[1].slice(0, -5);
-  const content = icons[name].body;
+  const collectionName = slug[0];
+  const iconName = slug[1].slice(0, -5);
+
+  const iconSet = JSON.parse(
+    readFileSync(path.join(ICON_SETS_DIR, `${collectionName}.json`), "utf-8"),
+  ) as Record<string, { body: string }>;
+
+  const content = iconSet[iconName].body;
 
   if (!content) {
     return NextResponse.json("Not Found", { status: 404 });
   }
 
   const json = {
-    name,
+    name: iconName,
     type: "registry:ui",
     registryDependencies: [],
     dependencies: [],
@@ -46,8 +39,8 @@ export async function GET(
     },
     files: [
       {
-        path: `${name}.tsx`,
-        content: getIconByTemplate(name, content),
+        path: `${iconName}.tsx`,
+        content: getIconByTemplate(iconName, content),
         type: "registry:ui",
       },
     ],
