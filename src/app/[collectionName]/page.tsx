@@ -26,15 +26,15 @@ export default async function Page({
 
   const icons = collections[collectionName];
 
+  const iconSet = JSON.parse(
+    readFileSync(path.join(ICON_SETS_DIR, `${collectionName}.json`), "utf-8"),
+  ) as Record<string, { body: string }>;
+
   const getShadcnCmd = (icon: string) => {
     return `npx shadcn@latest add "https://shadcn-icons.vercel.app/${collectionName}/${icon}.json"`;
   };
 
   const getIcon = (icon: string) => {
-    const iconSet = JSON.parse(
-      readFileSync(path.join(ICON_SETS_DIR, `${collectionName}.json`), "utf-8"),
-    ) as Record<string, { body: string }>;
-
     return `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">${iconSet[icon].body}</svg>`;
   };
 
