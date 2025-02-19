@@ -1,39 +1,44 @@
-// https://api.iconify.design/mdi.json?icons=home
+// https://iconify.design/docs/api/
 
-export interface IconSet {
-  prefix: string;
-  icons: Record<string, { body: string }>;
-  aliases?: Record<string, { parent: string }>;
+// https://api.iconify.design/mdi.json?icons=home
+// https://api.iconify.design/fluent-emoji-flat/alarm-clock.svg
+
+interface IconifyParams {
+  color?: string;
+  width?: number;
+  height?: number;
+  flip?: string;
+  rotate?: number;
+  box?: boolean;
 }
 
-export async function getIconSetByCollectionName(collectionName: string) {
-  const response = await fetch(
-    `https://raw.githubusercontent.com/iconify/icon-sets/refs/heads/master/json/${collectionName}.json`,
+export async function getIconSetByCollectionName(
+  collectionName: string,
+  iconName: string,
+  params?: IconifyParams,
+) {
+  const searchParams = new URLSearchParams(
+    Object.fromEntries(
+      Object.entries(params ?? {}).map(([key, value]) => [
+        key,
+        value?.toString(),
+      ]),
+    ),
   );
 
-  const json = (await response.json()) as IconSet;
+  const paramsString = searchParams.toString();
+  const payload = `https://api.iconify.design/${collectionName}/${iconName}.svg${
+    paramsString ? `?${paramsString}` : ""
+  }`;
 
-  return json;
+  const response = await fetch(payload);
+
+  const svg = await response.text();
+
+  return svg;
 }
 
-export async function getIcon(collectionName: string, iconName: string) {
-  const iconSet = await getIconSetByCollectionName(collectionName);
-
-  const icon = iconSet.icons[iconName];
-
-  if (icon) return icon;
-
-  if (!icon) {
-    const aliases = iconSet.aliases ?? {};
-    const aliasName = aliases[iconName]?.parent;
-
-    return aliases[iconName] ? iconSet.icons[aliasName] : null;
-  }
-
-  return null;
-}
-
-export function getIconByTemplate(name: string, body: string) {
+export function getIconByTemplate(name: string, svg: string) {
   const componentName =
     name.charAt(0).toUpperCase() +
     name.slice(1).replace(/-([a-z])/g, (_, char) => char.toUpperCase());
@@ -42,16 +47,24 @@ export function getIconByTemplate(name: string, body: string) {
 
 export function ${componentName}(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
-      viewBox="0 0 24 24"
-      {...props}
-    >
-      ${body}
-    </svg>
+    ${svg.replace(/<svg (.*?)>/, "<svg $1 {...props}>")}
   );
 }
 `;
+}
+
+export async function getIcon(
+  collectionName: string,
+  iconName: string,
+  params?: IconifyParams,
+) {
+  const body = await getIconSetByCollectionName(
+    collectionName,
+    iconName,
+    params,
+  );
+
+  if (!body) return null;
+
+  return getIconByTemplate(iconName, body);
 }

@@ -1,18 +1,19 @@
 import { NextResponse } from "next/server";
-import { getIcon, getIconByTemplate } from "./utils";
+import { getIcon } from "./utils";
 
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ slug: string }> },
 ) {
+  const url = new URL(request.url);
+  const searchParams = Object.fromEntries(url.searchParams.entries());
+
   const { slug } = await params;
 
   const collectionName = slug[0];
   const iconName = slug[1].slice(0, -5);
 
-  const icon = await getIcon(collectionName, iconName);
-
-  const content = icon?.body;
+  const content = await getIcon(collectionName, iconName, searchParams);
 
   if (!content) {
     return NextResponse.json("Not Found", { status: 404 });
@@ -31,8 +32,8 @@ export async function GET(
     },
     files: [
       {
-        path: `${iconName}.tsx`,
-        content: getIconByTemplate(iconName, content),
+        path: `/icons/${iconName}.tsx`,
+        content,
         type: "registry:ui",
       },
     ],
