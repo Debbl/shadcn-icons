@@ -2,7 +2,7 @@
   "name": "shadcn-icons",
   "type": "module",
   "version": "0.0.0",
-  "packageManager": "pnpm@10.4.0",
+  "packageManager": "pnpm@10.4.1",
   "description": "Shadcn Icons CLI",
   "author": "Brendan Dash <me@aiwan.run> (https://aiwan.run)",
   "license": "MIT",
@@ -46,6 +46,6 @@
   "devDependencies": {
     "bumpp": "^10.0.3",
     "tsup": "^8.3.6",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.7"
   }
 }
