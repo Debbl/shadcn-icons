@@ -29,7 +29,7 @@ export async function getIconSetByCollectionName(
   );
 
   const paramsString = searchParams.toString();
-  const payload = `${ICONIFY_API_URL}${collectionName}/${iconName}.svg${
+  const payload = `${ICONIFY_API_URL}/${collectionName}/${iconName}.svg${
     paramsString ? `?${paramsString}` : ""
   }`;
 

@@ -10,8 +10,9 @@ export async function GET(
 
   const { slug } = await params;
 
-  const collectionName = slug[0];
-  const iconName = slug[1].slice(0, -5);
+  const slugArray = slug[0].slice(0, -5).split(":");
+  const collectionName = slugArray[0];
+  const iconName = slugArray[1];
 
   const content = await getIcon(collectionName, iconName, searchParams);
 

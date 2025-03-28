@@ -35,6 +35,7 @@
     "precache",
     "serwist",
     "shadcn",
-    "turbopack"
+    "turbopack",
+    "vaul"
   ]
 }
