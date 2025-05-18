@@ -1,8 +1,11 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": ["src/**"],
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "dev": {
       "persistent": true,
