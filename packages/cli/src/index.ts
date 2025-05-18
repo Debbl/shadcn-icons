@@ -1,2 +1,2 @@
 // eslint-disable-next-line no-console
-console.log("shadcn-icons");
+console.log('shadcn-icons')
