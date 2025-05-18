@@ -19,7 +19,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
 
   const json = {
     name: iconName,
-    type: 'registry:component',
+    type: 'registry:ui',
     homepage: 'https://shadcn-icons.vercel.app',
     registryDependencies: [],
     dependencies: [],
@@ -31,9 +31,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
     },
     files: [
       {
-        path: `components/icons/${iconName}.tsx`,
         content,
-        type: 'registry:component',
+        type: 'registry:ui',
+        target: `components/icons/${iconName}.tsx`,
       },
     ],
   }
