@@ -21,7 +21,7 @@ export function IconCell({ icon }: { icon: string }) {
   }, [icon, svg])
 
   const command = useMemo(() => {
-    return `npx shadcn@latest add "https://shadcn-icons.vercel.app/i/${icon}.json"`
+    return `npx shadcn@latest add "https://shadcn-icons.vercel.app/r/${icon}.json"`
   }, [icon])
 
   return (
