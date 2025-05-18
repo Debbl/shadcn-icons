@@ -33,7 +33,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
       {
         path: `components/icons/${iconName}.tsx`,
         content,
-        type: 'registry:ui',
+        type: 'registry:component',
       },
     ],
   }
