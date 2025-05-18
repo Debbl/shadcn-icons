@@ -154,8 +154,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.1.7)
       twl:
-        specifier: 0.0.0-alpha.6
-        version: 0.0.0-alpha.6
+        specifier: ^0.0.0
+        version: 0.0.0
       unplugin-auto-import:
         specifier: ^19.2.0
         version: 19.2.0
@@ -4466,6 +4466,9 @@ packages:
   tailwind-merge@2.5.5:
     resolution: {integrity: sha512-0LXunzzAZzo0tEPxV3I297ffKZPlKDrjj7NXphC8V5ak9yHC5zRmxnOe2m/Rd/7ivsOMJe3JZ2JVocoDdQTRBA==}
 
+  tailwind-merge@3.3.0:
+    resolution: {integrity: sha512-fyW/pEfcQSiigd5SNn0nApUOxx0zB/dm6UDU/rEwc2c3sX2smWUNbapHv+QRqLGVp9GWX3THIa7MUGPo+YkDzQ==}
+
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
@@ -4637,6 +4640,9 @@ packages:
   turbo@2.5.3:
     resolution: {integrity: sha512-iHuaNcq5GZZnr3XDZNuu2LSyCzAOPwDuo5Qt+q64DfsTP1i3T2bKfxJhni2ZQxsvAoxRbuUK5QetJki4qc5aYA==}
     hasBin: true
+
+  twl@0.0.0:
+    resolution: {integrity: sha512-0USjUxkw2GnED8S+PP5WFzA+nCuorRXCOQRiwBoDcQvnShx7lTdIsTJclVNmvnFu97t9g1cEMZZjK1RVWtmN4w==}
 
   twl@0.0.0-alpha.6:
     resolution: {integrity: sha512-EH2iqRcuxaPJjNFzg56cdGjMRtHX+872thnrmtxH0At/6EYuz60cUjQdfGmEXsP7CVQjxLYiqLjIC3JlzYn70g==}
@@ -9456,6 +9462,8 @@ snapshots:
 
   tailwind-merge@2.5.5: {}
 
+  tailwind-merge@3.3.0: {}
+
   tailwindcss-animate@1.0.7(tailwindcss@4.1.7):
     dependencies:
       tailwindcss: 4.1.7
@@ -9612,6 +9620,11 @@ snapshots:
       turbo-linux-arm64: 2.5.3
       turbo-windows-64: 2.5.3
       turbo-windows-arm64: 2.5.3
+
+  twl@0.0.0:
+    dependencies:
+      clsx: 2.1.1
+      tailwind-merge: 3.3.0
 
   twl@0.0.0-alpha.6:
     dependencies:

@@ -7,8 +7,8 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from '~/components/ui/Drawer'
-import { useIconSvg } from '../hooks/useIconSvg'
+} from '~/components/ui/drawer'
+import { useIconSvg } from '../hooks/use-icon-svg'
 
 export function IconCell({ icon }: { icon: string }) {
   const { svg } = useIconSvg(icon)

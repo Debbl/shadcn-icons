@@ -1,7 +1,6 @@
 'use client'
+import { useAnimation } from 'motion/react'
 import { useCallback, useImperativeHandle, useRef } from 'react'
-import { motion, useAnimation } from '~/lib/motion'
-import { cn } from '~/lib/utils'
 import type { Transition } from 'motion/react'
 import type { HTMLAttributes } from 'react'
 

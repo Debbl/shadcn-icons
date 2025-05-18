@@ -1,10 +1,10 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { ThemeSwitcher } from '~/components/ThemeSwitcher'
-import { Input } from '~/components/ui/Input'
-import { IconCell } from './components/IconCell'
-import { useSearchIcons } from './hooks/useSearchIcons'
+import { ThemeSwitcher } from '~/components/theme-switcher'
+import { Input } from '~/components/ui/input'
+import { IconCell } from './components/icon-cell'
+import { useSearchIcons } from './hooks/use-search-icons'
 import { Collections } from './icons'
 
 export default function Home() {
