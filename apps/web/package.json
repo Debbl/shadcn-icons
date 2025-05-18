@@ -15,10 +15,11 @@
   "scripts": {
     "d": "tsx ./scripts/dev",
     "dev": "next dev",
+    "start": "next start",
     "build": "next build",
-    "icons": "tsx ./scripts/icons",
     "build:analyze": "ANALYZE=true next build",
-    "start": "next start"
+    "icons": "tsx ./scripts/icons",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@debbl/ahooks": "^0.4.1",
