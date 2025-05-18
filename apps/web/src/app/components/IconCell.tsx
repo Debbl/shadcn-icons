@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { CopyIcon } from '~/components/icons/CopyIcon'
+import { CopyButton } from '~/components/animate-ui/buttons/copy'
 import {
   Drawer,
   DrawerContent,
@@ -24,10 +24,6 @@ export function IconCell({ icon }: { icon: string }) {
     return `npx shadcn@latest add "https://shadcn-icons.vercel.app/i/${icon}.json"`
   }, [icon])
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(command)
-  }
-
   return (
     <Drawer>
       <DrawerTrigger>
@@ -49,10 +45,10 @@ export function IconCell({ icon }: { icon: string }) {
             </DrawerDescription>
           </DrawerHeader>
 
-          <div className='flex items-center gap-2 p-4 select-text'>
+          <div className='bg-accent ml-4 flex w-fit items-center gap-2 rounded-md p-4 select-text'>
             <code>{command}</code>
 
-            <CopyIcon className='size-6 p-1' onClick={handleCopy} />
+            <CopyButton content={command} />
           </div>
         </div>
       </DrawerContent>
