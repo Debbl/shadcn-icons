@@ -31,10 +31,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
     },
     files: [
       {
-        path: `components/icons/${iconName}.tsx`,
+        path: `components/icons/${collectionName}-${iconName}.tsx`,
         content,
         type: 'registry:ui',
-        target: `components/icons/${iconName}.tsx`,
+        target: `components/icons/${collectionName}-${iconName}.tsx`,
       },
     ],
   }
