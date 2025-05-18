@@ -31,6 +31,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
     },
     files: [
       {
+        path: `components/icons/${iconName}.tsx`,
         content,
         type: 'registry:ui',
         target: `components/icons/${iconName}.tsx`,
